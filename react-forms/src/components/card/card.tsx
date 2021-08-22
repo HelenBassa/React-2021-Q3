@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { ICard } from '../../types';
 
-const Card: React.FC = () => {
+const Card: FC<ICard> = ({ cardData }) => {
   return (
     <div className="card">
       <div className="card__description">
-        <h3 className="description__title">Cute Cat</h3>
-        <p className="description__text">
-          There are two means of refuge from the miseries of life: music and
-          cats.
+        <h3 className="description__title">
+          {cardData.firstName} {cardData.lastName}
+        </h3>
+        <p className="description__category">
+          {cardData.gender ? 'Female' : 'Male'}
         </p>
-        <p className="description__author">Albert Schweitzer</p>
-        <p className="description__category">Cats</p>
-        <button className="description__button">Read More</button>
+        <p className="description__text">Birth Date: {cardData.birthDate}</p>
+        <p className="description__text">Country: {cardData.country}</p>
       </div>
     </div>
   );
 };
+
 export default Card;

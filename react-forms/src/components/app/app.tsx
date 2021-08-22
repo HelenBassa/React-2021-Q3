@@ -1,10 +1,18 @@
-import React from 'react';
-import CardsField from '../cards-field/cardsField';
+import React, { FC, useState } from 'react';
+import Form from '../form/form';
+import Card from '../card/card';
+import { ICardData } from '../../types';
 
-const App: React.FC = () => {
+const App: FC = () => {
+  const [formValues, setFormValues] = useState<ICardData[]>([]);
   return (
     <div className="container">
-      <CardsField />
+      <Form setFormValues={setFormValues} />
+      <div className="cards-field">
+        {formValues.map((cardData, index) => {
+          return <Card cardData={cardData} key={index} />;
+        })}
+      </div>
     </div>
   );
 };
