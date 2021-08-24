@@ -1,9 +1,9 @@
 @import './assets/styles/reset';
+@import './assets/styles/colors';
 
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
 
 @import './components/app/app';
-@import './components/toggleSwitch/toggleSwitch';
-@import './components/form/form';
-@import './components/card/card';
+@import './components/search-panel/searchPanel';
 @import './components/cards-field/cardsField';
+@import './components/card/card';

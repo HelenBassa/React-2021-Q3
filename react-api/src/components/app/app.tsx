@@ -1,18 +1,32 @@
 import React, { FC, useState } from 'react';
-import Form from '../form/form';
-import Card from '../card/card';
-import { ICardData } from '../../types';
+import { ICardData, SortType } from '../../types';
+import { SearchPanel } from '../search-panel/searchPanel';
+import CardsField from '../cards-field/cardsField';
 
 const App: FC = () => {
-  const [formValues, setFormValues] = useState<ICardData[]>([]);
+  const [state, setState] = useState<ICardData[]>([]);
+  const [sortBy, setSortBy] = useState<SortType>(SortType.publishedAt);
+  const [page, setPage] = useState<number>(1);
+  const [pageSize, setPageSize] = useState<number>(10);
+  const [pageCounter, setPageCounter] = useState<number>(0);
+  const [totalResults, setTotalResults] = useState<number>(0);
+
   return (
     <div className="container">
-      <Form setFormValues={setFormValues} />
-      <div className="cards-field">
-        {formValues.map((cardData, index) => {
-          return <Card cardData={cardData} key={index} />;
-        })}
-      </div>
+      <SearchPanel
+        setState={setState}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+        page={page}
+        setPage={setPage}
+        pageSize={pageSize}
+        setPageSize={setPageSize}
+        pageCounter={pageCounter}
+        setPageCounter={setPageCounter}
+        totalResults={totalResults}
+        setTotalResults={setTotalResults}
+      />
+      <CardsField state={state} />
     </div>
   );
 };

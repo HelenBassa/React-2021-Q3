@@ -4,15 +4,18 @@ import { ICard } from '../../types';
 const Card: FC<ICard> = ({ cardData }) => {
   return (
     <div className="card">
+      <div className="card__img">
+        <img src={cardData.urlToImage} alt={cardData.title} />
+      </div>
       <div className="card__description">
-        <h3 className="description__title">
-          {cardData.firstName} {cardData.lastName}
-        </h3>
+        <a className="description__title" href={cardData.url}>
+          {cardData.title}
+        </a>
+        <p className="description__author">Author: {cardData.author}</p>
         <p className="description__category">
-          {cardData.gender ? 'Female' : 'Male'}
+          Published at: {cardData.publishedAt}
         </p>
-        <p className="description__text">Birth Date: {cardData.birthDate}</p>
-        <p className="description__text">Country: {cardData.country}</p>
+        <p className="description__text">{cardData.description}</p>
       </div>
     </div>
   );

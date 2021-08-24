@@ -1,18 +1,21 @@
-$card-bg-color: #fff;
-$title-color: #00c4cc;
-$main-color: #939597;
-$hover-color: #f5df4d;
-
 .card {
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 350px;
   background-color: $card-bg-color;
   border-radius: 5px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 
   &__img {
+    width: inherit;
+    height: 200px;
+    overflow: hidden;
     border-radius: 5px 5px 0 0;
+
+    & img {
+      width: inherit;
+      height: 100%;
+    }
   }
 
   &__description {
@@ -22,10 +25,15 @@ $hover-color: #f5df4d;
 
 .description {
   &__title {
+    display: block;
+    height: 150px;
     padding: 10px 0;
     color: $title-color;
     font-size: 30px;
     font-weight: 600;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &__text {
