@@ -4,11 +4,13 @@ import Card from '../card/card';
 
 const CardsField: FC<ICardField> = ({ state }) => {
   return (
-    <div className="cards-field">
+    <ul className="cards-field">
       {state.map((cardData, index) => {
-        return <Card key={index.toString()} cardData={cardData} />;
+        return (
+          <Card key={index.toString()} cardData={cardData} index={index + 1} />
+        );
       })}
-    </div>
+    </ul>
   );
 };
 

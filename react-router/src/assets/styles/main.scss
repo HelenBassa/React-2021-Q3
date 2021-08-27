@@ -1,0 +1,25 @@
+$body-color: #00c4cc;
+
+body {
+  background-color: $body-color;
+  font-family: 'Quicksand', serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2%;
+}
+
+.transition-enter {
+  opacity: 0;
+
+  &-active {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useState } from 'react';
+import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import { AxiosResponse } from 'axios';
 import axiosInstance from '../../services/api';
 import { IGet200Articles, ISearchPanel } from '../../types';
@@ -18,9 +18,30 @@ export const SearchPanel: FC<ISearchPanel> = ({
   setPageCounter,
   totalResults,
   setTotalResults,
+  // setIsDataStatus,
 }) => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    const store = JSON.parse(sessionStorage.getItem('data') || '[]');
+    setState(store);
+  }, []);
+
+  // const setErrorStatus = (status: number) => {
+  //   if (status === StatusCode.BadRequest) {
+  //     setIsDataStatus('Data not found. Try something else ..');
+  //   }
+  //   if (status === StatusCode.UpgradeRequired) {
+  //     setIsDataStatus('Server side error. Enter other data..');
+  //   }
+  //   if (status === StatusCode.TooManyRequests) {
+  //     setIsDataStatus('Limit of server requests. Try later..');
+  //   }
+  //   if (status === StatusCode.ServerErrorInternal) {
+  //     setIsDataStatus('Server side error. Try later...');
+  //   }
+  // };
 
   const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -32,10 +53,13 @@ export const SearchPanel: FC<ISearchPanel> = ({
       );
 
       setState(response.data.articles);
+      sessionStorage.setItem('data', JSON.stringify(response.data.articles));
       setTotalResults(response.data.totalResults);
+      // setIsDataStatus('');
     } catch (err) {
-      // eslint-disable-next-line no-console
-      console.error(err);
+      setState([]);
+      // setErrorStatus(err.response.status);
+      throw new Error(err);
     } finally {
       setIsLoading(false);
       setPageCounter(page);

@@ -1,9 +1,13 @@
 @import './assets/styles/reset';
 @import './assets/styles/colors';
+@import './assets/styles/main';
 
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
 
-@import './components/app/app';
+@import './pages/home/home';
+@import './pages/about/about';
+@import './pages/404/404';
+
 @import './components/search-panel/searchPanel';
 @import './components/cards-field/cardsField';
 @import './components/card/card';

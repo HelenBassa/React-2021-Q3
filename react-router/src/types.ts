@@ -16,6 +16,7 @@ export interface ISearchPanel {
   setPageCounter: (page: number) => void;
   totalResults: number;
   setTotalResults: React.Dispatch<React.SetStateAction<number>>;
+  // setIsDataStatus: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface ISearchLine {
@@ -44,23 +45,16 @@ export interface IPagination {
   totalResults: number;
 }
 
-export interface IErrors {
-  firstName?: string;
-  lastName?: string;
-  birthDate?: string;
-  agree?: boolean;
-}
-
 export interface ICardField {
   state: ICardData[];
 }
 
 export interface ICard {
   cardData: ICardData;
+  index: number;
 }
 
 export interface ICardData {
-  // index: number;
   author: string;
   description: string;
   publishedAt: string;
@@ -69,22 +63,16 @@ export interface ICardData {
   urlToImage: string;
 }
 
-export interface IToggleSwitch {
-  id: string;
-  checked: boolean;
-  onChange: (checked: boolean) => void;
-}
-
-export interface IArticle {
-  author: string;
-  content: string;
-  description: string;
-  publishedAt: string;
-  source: { id: string; name: string };
-  title: string;
-  url: string;
-  urlToImage: string;
-}
+// export interface IArticle {
+//   author: string;
+//   content: string;
+//   description: string;
+//   publishedAt: string;
+//   source: { id: string; name: string };
+//   title: string;
+//   url: string;
+//   urlToImage: string;
+// }
 
 export interface IGet200Articles {
   totalResults: SetStateAction<number>;
@@ -95,4 +83,15 @@ export enum SortType {
   relevancy = 'relevancy',
   popularity = 'popularity',
   publishedAt = 'publishedAt',
+}
+
+export interface IDetailsParams {
+  id: string;
+}
+
+export enum StatusCode {
+  BadRequest = 400,
+  TooManyRequests = 429,
+  UpgradeRequired = 426,
+  ServerErrorInternal = 500,
 }
