@@ -4,10 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
 
-@import './pages/home/home';
-@import './pages/about/about';
-@import './pages/404/404';
-
+@import './components/header/header';
 @import './components/search-panel/searchPanel';
 @import './components/cards-field/cardsField';
 @import './components/card/card';

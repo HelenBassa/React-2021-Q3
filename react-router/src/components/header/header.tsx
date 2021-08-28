@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 export const Header: FC = () => {
   return (
-    <header>
+    <header className="container header">
       <nav>
-        <ul>
+        <ul className="header__nav">
           <li>
             <NavLink
               exact
-              activeClassName="active-link"
-              className="nav-button"
+              activeClassName="active"
+              className="header__item"
               to="/"
             >
               Home
@@ -18,8 +18,9 @@ export const Header: FC = () => {
           </li>
           <li>
             <NavLink
-              activeClassName="active-link"
-              className="nav-button"
+              exact
+              activeClassName="active"
+              className="header__item"
               to="/about"
             >
               About

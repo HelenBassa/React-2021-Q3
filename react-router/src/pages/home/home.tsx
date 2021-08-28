@@ -10,31 +10,23 @@ export const Home: FC = () => {
   const [pageSize, setPageSize] = useState<number>(10);
   const [pageCounter, setPageCounter] = useState<number>(0);
   const [totalResults, setTotalResults] = useState<number>(0);
-  // const [isDataStatus, setIsDataStatus] = useState('');
 
   return (
     <div className="container">
-      {/* {isDataStatus.trim() === '' ? ( */}
-      <>
-        <SearchPanel
-          setState={setState}
-          sortBy={sortBy}
-          setSortBy={setSortBy}
-          page={page}
-          setPage={setPage}
-          pageSize={pageSize}
-          setPageSize={setPageSize}
-          pageCounter={pageCounter}
-          setPageCounter={setPageCounter}
-          totalResults={totalResults}
-          setTotalResults={setTotalResults}
-          // setIsDataStatus={setIsDataStatus}
-        />
-        <CardsField state={state} />
-      </>
-      {/* ) : (
-        <p>{isDataStatus}</p>
-      )} */}
+      <SearchPanel
+        setState={setState}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+        page={page}
+        setPage={setPage}
+        pageSize={pageSize}
+        setPageSize={setPageSize}
+        pageCounter={pageCounter}
+        setPageCounter={setPageCounter}
+        totalResults={totalResults}
+        setTotalResults={setTotalResults}
+      />
+      <CardsField state={state} />
     </div>
   );
 };

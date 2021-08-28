@@ -16,7 +16,6 @@ export interface ISearchPanel {
   setPageCounter: (page: number) => void;
   totalResults: number;
   setTotalResults: React.Dispatch<React.SetStateAction<number>>;
-  // setIsDataStatus: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface ISearchLine {
@@ -63,17 +62,6 @@ export interface ICardData {
   urlToImage: string;
 }
 
-// export interface IArticle {
-//   author: string;
-//   content: string;
-//   description: string;
-//   publishedAt: string;
-//   source: { id: string; name: string };
-//   title: string;
-//   url: string;
-//   urlToImage: string;
-// }
-
 export interface IGet200Articles {
   totalResults: SetStateAction<number>;
   articles: ICardData[];
@@ -87,11 +75,4 @@ export enum SortType {
 
 export interface IDetailsParams {
   id: string;
-}
-
-export enum StatusCode {
-  BadRequest = 400,
-  TooManyRequests = 429,
-  UpgradeRequired = 426,
-  ServerErrorInternal = 500,
 }

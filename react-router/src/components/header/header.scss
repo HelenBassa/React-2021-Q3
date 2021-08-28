@@ -1,0 +1,36 @@
+.header {
+  &__nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+
+    gap: 24px;
+  }
+
+  &__item {
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    font-family: 'Quicksand', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover,
+    &:active,
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &__item:hover {
+    color: #f5df4d;
+  }
+
+  .active {
+    color: #f5df4d;
+  }
+}

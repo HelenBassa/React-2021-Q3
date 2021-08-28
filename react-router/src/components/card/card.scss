@@ -6,15 +6,32 @@
   border-radius: 5px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 
+  &.full {
+    width: 900px;
+  }
+
   &__img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: inherit;
     height: 200px;
     overflow: hidden;
     border-radius: 5px 5px 0 0;
 
     & img {
-      width: inherit;
+      min-width: -webkit-fill-available;
       height: 100%;
+    }
+
+    &.full {
+      height: auto;
+
+      & img {
+        height: 100%;
+        width: inherit;
+      }
     }
   }
 
@@ -34,6 +51,11 @@
     text-decoration: none;
     text-overflow: ellipsis;
     overflow: hidden;
+
+    &.full {
+      height: auto;
+      text-align: center;
+    }
   }
 
   &__text {
