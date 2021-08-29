@@ -1,14 +1,29 @@
 import React, { ChangeEvent, FC } from 'react';
-import { IPagination } from '../../types';
+import { useDispatch } from 'react-redux';
+import useTypedSelector from '../../hooks/useTypedSelector';
+import { ActionTypes, IPagination } from '../../types';
 
 export const Pagination: FC<IPagination> = ({
   page,
-  setPage,
   pageSize,
-  setPageSize,
-  totalResults,
   pageCounter,
 }) => {
+  const dispatch = useDispatch();
+
+  const { totalResults } = useTypedSelector((state) => state.page);
+
+  const setPage = (num: number) => {
+    dispatch({ type: ActionTypes.PAGE, payload: num });
+  };
+
+  const setPageSize = (num: number) => {
+    dispatch({ type: ActionTypes.PAGE_SIZE, payload: num });
+  };
+
+  const setTotalResults = () => {
+    dispatch({ type: ActionTypes.TOTAL_RESULTS, payload: totalResults });
+  };
+
   const pageHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setPage(+value);
@@ -17,6 +32,7 @@ export const Pagination: FC<IPagination> = ({
   const pageSizeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     setPageSize(+value);
+    setTotalResults();
   };
 
   return (

@@ -1,8 +1,15 @@
 import React, { FC } from 'react';
-import { IRadioBtns, SortType } from '../../types';
+import { useDispatch } from 'react-redux';
+import { ActionTypes, IRadioBtns, SortType } from '../../types';
 import { RadioBtn } from '../radio-btn/radio-btn';
 
-export const RadioBtns: FC<IRadioBtns> = ({ sortBy, setSortBy }) => {
+export const RadioBtns: FC<IRadioBtns> = ({ sortBy }) => {
+  const dispatch = useDispatch();
+
+  const setSortBy = (value: string) => {
+    dispatch({ type: ActionTypes.SORT_BY, payload: value });
+  };
+
   return (
     <div className="sorting">
       <RadioBtn

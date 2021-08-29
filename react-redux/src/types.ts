@@ -1,32 +1,19 @@
 import { SetStateAction } from 'react';
 
-export interface IForm {
-  setFormValues: SetStateAction<ICardData[]>;
-}
-
 export interface ISearchPanel {
-  setState: React.Dispatch<React.SetStateAction<ICardData[]>>;
   sortBy: SortType;
-  setSortBy: (sortBy: SortType) => void;
   page: number;
-  setPage: (page: number) => void;
   pageSize: number;
-  setPageSize: (pageSize: number) => void;
   pageCounter: number;
-  setPageCounter: (page: number) => void;
-  totalResults: number;
-  setTotalResults: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface ISearchLine {
   isLoading: boolean;
   searchValue: string;
-  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface IRadioBtns {
   sortBy: SortType;
-  setSortBy: (sortBy: SortType) => void;
 }
 
 export interface IRadioBtn {
@@ -37,15 +24,8 @@ export interface IRadioBtn {
 
 export interface IPagination {
   page: number;
-  setPage: (page: number) => void;
   pageSize: number;
-  setPageSize: (pageSize: number) => void;
   pageCounter: number;
-  totalResults: number;
-}
-
-export interface ICardField {
-  state: ICardData[];
 }
 
 export interface ICard {
@@ -72,7 +52,18 @@ export enum SortType {
   popularity = 'popularity',
   publishedAt = 'publishedAt',
 }
+export interface IActionReducer {
+  type: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  payload?: any;
+}
 
-export interface IDetailsParams {
-  id: string;
+export enum ActionTypes {
+  SEARCH_VALUE = 'SEARCH_VALUE',
+  SORT_BY = 'SORT_BY',
+  PAGE = 'PAGE',
+  PAGE_COUNTER = 'PAGE_COUNTER',
+  PAGE_SIZE = 'PAGE_SIZE',
+  TOTAL_RESULTS = 'TOTAL_RESULTS',
+  ADD_ARTICLE = 'ADD_ARTICLE',
 }
